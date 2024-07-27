@@ -1,0 +1,16 @@
+conda create -n vto-gcp python=3.10
+conda activate vto-gcp
+
+conda install conda-forge::embree
+conda install conda-forge::pyembree==0.1.6
+conda install trimesh==3.9.36
+pip install -r requirement.txt
+conda install pytorch=1.13.0 torchvision pytorch-cuda=11.6 -c pytorch -c nvidia
+
+conda install iopath -c iopath
+conda install pytorch3d -c pytorch3d
+cd HairStepInfer/external/3DDFA_V2 && sh build.sh
+pip uninstall scikit-image
+pip install scikit-image==0.17.1
+pip uninstall numpy
+pip install numpy==1.23.5
