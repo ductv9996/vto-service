@@ -4,7 +4,7 @@ import numpy as np
 from body_head_recovery.full_body_reconstruction import *
 
 
-dir_path = "body_head_recovery/data/inputs_3view"
+dir_path = "./inputs_3view"
 name = "Vit"
 gender = "male"
 height_m = 1.67
@@ -43,8 +43,14 @@ Output:
 
 hair_input_path= f"body_head_recovery/data/body_temp/hair/{gender}/hair.obj"
 avatar_output_path="temp/avatar.glb"
+
 merger_body_hair(body_head_verts=body_head_verts, 
                 texture=final_texture,
                 hair_input_path=hair_input_path,
                 avatar_output_path=avatar_output_path)
+
+os.system(f"docker run --name convert_usdz -v ./temp:/tmp vto/convert")
+os.system(f"docker cp convert_usdz:/tmp/avatar.usdz ./temp/avatar.usdz")
+os.system("docker rm convert_usdz")
+
 print("Run reconstruction body head Done")

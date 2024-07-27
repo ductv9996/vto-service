@@ -1,6 +1,5 @@
 models/smplx/
 data/outputs_3view/
-data/inputs_3view/
 test_color/
 
 *.zip

@@ -65,6 +65,11 @@ class AvatarPipeline():
                         texture=final_texture,
                         hair_input_path=path_to_ply,
                         avatar_output_path=avatar_output_path)
+        
+        os.system(f"docker run --name convert_usdz -v {save}:/tmp vto/convert")
+        os.system(f"docker cp convert_usdz:/tmp/avatar.usdz {save}/avatar.usdz")
+        os.system("docker rm convert_usdz")
+
         return avatar_output_path, measurement
 
 # processor = AvatarPipeline()
