@@ -1,3 +1,6 @@
 [submodule "body_head_recovery"]
 	path = body_head_recovery
 	url = git@github.com:ductv9996/body_head_recovery
+[submodule "HairStepInfer"]
+	path = HairStepInfer
+	url = git@github.com:banglevan/HairStepInfer
