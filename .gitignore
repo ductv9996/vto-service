@@ -4,6 +4,7 @@ data/inputs_3view/
 test_color/
 
 *.zip
+temp/
 
 data/body_params/bary_coords.pt
 data/body_params/face_expand.pt

@@ -144,7 +144,7 @@ def task_success_handler(sender=None, result=None, **kwargs):
                     "thighCircumference": measurement['thigh_circumference'],
                     "calfCircumference": measurement['calf_circumference'],
                     "ankleCircumference": measurement['ankle_circumference'],
-                    "shoulderBreadth": 42
+                    "shoulderBreadth": measurement['shoulder_breadth'],
                     }
                     }
 

@@ -5,6 +5,8 @@ mediapipe
 cmake==3.25.2
 imutils==0.5.4
 
+fvcore
+iopath
 torchfile==0.1.0
 seaborn==0.11.1
 matplotlib==3.5.2
