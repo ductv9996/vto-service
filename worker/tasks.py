@@ -85,7 +85,7 @@ def task_success_handler(sender=None, result=None, **kwargs):
     etimestamp = datetime.fromtimestamp(end_time).strftime('%Y-%m-%d %H:%M:%S')
     # print(os.path.split(os.getcwd())[0])
     print(result['result']['data_pred'])
-    avatar_output_path = os.path.join(os.path.split(os.getcwd())[0], 'try-on-ai-ml-avatar', result['result']['data_pred'][2:])
+    avatar_output_path = os.path.join(os.path.split(os.getcwd())[0], 'vto-service', result['result']['data_pred'][2:])
     objfilename = f"output-avatar/{result['result']['user_id']}_{etimestamp}.glb"
     gcloud_storage_upload(result['result']['GSTORAGE'], avatar_output_path, objfilename)
     

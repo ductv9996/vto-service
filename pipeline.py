@@ -70,6 +70,8 @@ class AvatarPipeline():
         os.system(f"docker cp convert_usdz:/tmp/avatar.usdz {save}/avatar.usdz")
         os.system("docker rm convert_usdz")
 
-        return avatar_output_path, measurement
+        avatar_usdz_path = os.path.join(save, 'avatar.usdz')#"temp/avatar.glb"
+
+        return avatar_usdz_path, measurement
 
 # processor = AvatarPipeline()
