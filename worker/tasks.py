@@ -25,7 +25,8 @@ sys.path.insert(0, os.path.split(os.getcwd())[0])
 ROOT_DATA = os.path.join(os.getcwd(), 'static')
 print(f'>> running on cache storage {ROOT_DATA}')
 TAGS = ['body', 'front', 'left', 'right']
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/thinkpro/try-on-ai-ml-avatar/HairStepInfer/lib/gcloud_token.json'
+credentials = os.path.join(os.getcwd(), 'HairStepInfer/lib/gcloud_token.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials
 
 
 class PredictTask(Task):
