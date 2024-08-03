@@ -1,20 +1,18 @@
-import cv2
-import trimesh
 import numpy as np
 import os
 
 from body_head_recovery.full_body_reconstruction import *
-# from HairStepInfer.inference import HairReconsPipeline
+from HairStepInfer.inference import HairReconsPipeline
 
 class AvatarPipeline():
     def __init__(self) -> None:
         self.DATA_ROOT = './static'
-        # self.hair_reconstructor = HairReconsPipeline()
+        self.hair_reconstructor = HairReconsPipeline()
 
-    # def run_hair(self, images, user_id):
-    #     image = images['front']
-    #     result = self.hair_reconstructor.run_pipeline(image, user_id=user_id)
-    #     return result
+    def run_hair(self, images, user_id):
+        image = images['front']
+        result = self.hair_reconstructor.run_pipeline(image, user_id=user_id)
+        return result
 
     def run_avatar(self, user_id: str, gender: str, 
                         height: float, weight: float, 
@@ -30,7 +28,7 @@ class AvatarPipeline():
             body_verts: tensor Nx3. 
             measurement: json object 
         """
-        # result_dict = self.run_hair(images, user_id=user_id)
+        result_dict = self.run_hair(images, user_id=user_id)
         #override path to ply
         # path_to_ply = result_dict['ply_path']# = ply_path
         path_to_ply = f"body_head_recovery/data/body_temp/hair/{gender}/hair.obj"
@@ -53,8 +51,8 @@ class AvatarPipeline():
         body_head_verts, final_texture = merger_body_head(gender=gender, 
                                                           body_verts=body_verts,
                                                         image_f=images['front'], 
-                                                        image_r=images['left'], 
-                                                        image_l=images['right'])
+                                                        image_r=images['right'], 
+                                                        image_l=images['left'])
         # hair_input_path="body_head_recovery/data/inputs/hair/225fccd3.ply"
         
         assert os.path.isfile(path_to_ply)
@@ -63,7 +61,7 @@ class AvatarPipeline():
         avatar_output_path = os.path.join(save, 'avatar.glb')#"temp/avatar.glb"
         merger_body_hair(body_head_verts=body_head_verts, 
                         texture=final_texture,
-                        hair_input_path=path_to_ply,
+                        hair_result=result_dict,
                         avatar_output_path=avatar_output_path)
         
         os.system(f"docker run --name convert_usdz -v {save}:/tmp vto/convert")
