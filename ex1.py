@@ -20,7 +20,7 @@ left_image = cv2.imread(f"{dir_path}/{name}/left.jpg")
 images = {}
 images["body"] = body_image_f
 images["front"] = front_image
-images["left"] = right_image
-images["right"] = left_image
+images["left"] = left_image
+images["right"] = right_image
 aa = AvatarPipeline()
 aa.run_avatar(user_id="Vit", gender="male", height=1.7, weight=67., images=images)

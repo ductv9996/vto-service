@@ -24,7 +24,7 @@ from pipeline import AvatarPipeline
 sys.path.insert(0, os.path.split(os.getcwd())[0])
 ROOT_DATA = os.path.join(os.getcwd(), 'static')
 print(f'>> running on cache storage {ROOT_DATA}')
-TAGS = ['body', 'front', 'left', 'right']
+TAGS = ['body', 'front', 'right', 'left']
 credentials = os.path.join(os.getcwd(), 'HairStepInfer/lib/gcloud_token.json')
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials
 
